@@ -400,6 +400,12 @@ let currentCategory = '';
 // Make functions globally available
 window.searchProducts = searchProductsGlobal;
 
+// Test function for WhatsApp button
+window.testWhatsApp = function(productCode) {
+    const whatsappLink = `https://wa.me/905315244000?text=Merhaba,+${encodeURIComponent(productCode)}+kodlu+davetiyenizle+ilgileniyorum!+Bilgi+alabilir+miyim?`;
+    window.open(whatsappLink, '_blank');
+};
+
 // Test function
 window.testSearch = function() {
     console.log('Test search called');
@@ -429,6 +435,7 @@ document.addEventListener('DOMContentLoaded', function() {
         dropdownMenu: !!dropdownMenu,
         catalogSection: !!catalogSection,
         productsSection: !!productsSection,
+        productDetailSection: !!productDetailSection,
         productsGrid: !!productsGrid
     });
     
@@ -786,6 +793,16 @@ function showProductDetail(productCode, productPrice) {
     if (detailOrderBtn) {
         const whatsappLink = `https://wa.me/905315244000?text=Merhaba,+${encodeURIComponent(productCode)}+kodlu+davetiyenizle+ilgileniyorum!+Bilgi+alabilir+miyim?`;
         detailOrderBtn.href = whatsappLink;
+        
+        // Also add onclick event as backup
+        detailOrderBtn.onclick = function(e) {
+            e.preventDefault();
+            window.open(whatsappLink, '_blank');
+        };
+        
+        console.log('WhatsApp link updated:', whatsappLink);
+    } else {
+        console.error('Detail order button not found');
     }
     
     // Scroll to top
@@ -844,21 +861,28 @@ style.textContent = `
 document.head.appendChild(style);
 // Hero Slider
 function initializeHeroSlider() {
-    console.log('Initializing hero slider...');
     const slides = document.querySelectorAll('.hero-slide');
     const dots = document.querySelectorAll('.hero-slider-dot');
     let currentSlide = 0;
     
-    console.log('Found slides:', slides.length);
-    console.log('Found dots:', dots.length);
+    if (slides.length === 0 || dots.length === 0) return;
     
-    if (slides.length === 0 || dots.length === 0) {
-        console.error('Hero slider elements not found');
-        return;
+    // Load background images lazily
+    function loadSlideImage(slide) {
+        const bgUrl = slide.getAttribute('data-bg');
+        if (bgUrl && !slide.style.backgroundImage) {
+            slide.style.backgroundImage = `url('${bgUrl}')`;
+        }
     }
     
+    // Load first slide immediately
+    if (slides[0]) loadSlideImage(slides[0]);
+    
     function showSlide(index) {
-        console.log('Showing slide:', index);
+        // Load current and next slide images
+        if (slides[index]) loadSlideImage(slides[index]);
+        if (slides[index + 1]) loadSlideImage(slides[index + 1]);
+        
         // Remove active class from all slides and dots
         slides.forEach(slide => slide.classList.remove('active'));
         dots.forEach(dot => dot.classList.remove('active'));
@@ -872,23 +896,16 @@ function initializeHeroSlider() {
     
     function nextSlide() {
         const next = (currentSlide + 1) % slides.length;
-        console.log('Next slide:', next);
         showSlide(next);
     }
     
     // Add click event to dots
     dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            console.log('Dot clicked:', index);
-            showSlide(index);
-        });
+        dot.addEventListener('click', () => showSlide(index));
     });
     
     // Auto-advance slides every 4 seconds
-    console.log('Starting auto-advance timer');
     setInterval(nextSlide, 4000);
-    
-    console.log('Hero slider initialized successfully');
 }
 
 // Search functionality
