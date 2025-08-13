@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topkapı Davetiye - Özel Günlerinizi, Özel Davetiyelerimizle Taçlandırın</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <!-- Mobile Menu Button -->
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+
+                <!-- Logo (Center) -->
+                <div class="nav-center">
+                    <div class="logo">
+                        <a href="#home" class="logo-link">
+                            <img src="logo.svg" alt="Topkapı Davetiye" class="logo-svg">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" id="search-input" placeholder="Ürün detayları ile arama yapınız." autocomplete="off">
+                        <button class="search-btn" id="search-btn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <div class="search-suggestions" id="search-suggestions" style="display: none;">
+                        <div class="suggestions-header">Popüler Aramalar:</div>
+                        <div class="suggestions-list" id="suggestions-list"></div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Dropdown Menu -->
+        <div class="dropdown-menu" id="dropdown-menu">
+            <div class="dropdown-content">
+                <a href="#home" class="dropdown-link">
+                    <i class="fas fa-home"></i> Anasayfa
+                </a>
+                <a href="#about" class="dropdown-link">
+                    <i class="fas fa-info-circle"></i> Hakkımızda
+                </a>
+                <div class="dropdown-submenu">
+                    <a href="#catalog" class="dropdown-link has-submenu">
+                        <i class="fas fa-heart"></i> Davetiye Modelleri
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                    <div class="submenu">
+                        <a href="#" class="submenu-link" data-category="Normal">
+                            <i class="fas fa-ring"></i> Düğün & Nişan Davetiye
+                        </a>
+                        <a href="#" class="submenu-link" data-category="Sunnet">
+                            <i class="fas fa-star"></i> Sünnet Davetiye
+                        </a>
+                    </div>
+                </div>
+                <a href="#price-list" class="dropdown-link">
+                    <i class="fas fa-list-alt"></i> Fiyat Listesi
+                </a>
+                <a href="#contact" class="dropdown-link">
+                    <i class="fas fa-phone"></i> İletişim
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-slider">
+            <div class="hero-slide active" style="background-image: url('giris/1.svg')"></div>
+            <div class="hero-slide" style="background-image: url('giris/2.svg')"></div>
+            <div class="hero-slide" style="background-image: url('giris/3.svg')"></div>
+            <div class="hero-slide" style="background-image: url('giris/4.svg')"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Topkapı Davetiye</h1>
+            <p class="hero-subtitle">Özel Günlerinizi, Özel Davetiyelerimizle Taçlandırın</p>
+            <div class="hero-buttons">
+                <a href="#catalog" class="btn btn-primary">Davetiye Modelleri</a>
+                <a href="#contact" class="btn btn-secondary">İletişim</a>
+            </div>
+        </div>
+        <div class="hero-slider-nav">
+            <div class="hero-slider-dot active" data-slide="0"></div>
+            <div class="hero-slider-dot" data-slide="1"></div>
+            <div class="hero-slider-dot" data-slide="2"></div>
+            <div class="hero-slider-dot" data-slide="3"></div>
+        </div>
+    </section>
+
+    <!-- Catalog Categories -->
+    <section id="catalog" class="catalog-section">
+        <div class="container">
+            <h2 class="section-title">Davetiye Modellerimiz</h2>
+            <div class="category-grid">
+                <div class="category-card" data-category="Normal">
+                    <div class="category-icon">
+                        <img src="icon/dugun.svg" alt="Düğün İkonu" class="category-svg">
+                    </div>
+                    <h3>Düğün & Nişan Davetiyesi</h3>
+                    <p>Özel günleriniz için zarif ve şık davetiye tasarımları</p>
+                    <button class="btn btn-outline">Ürünleri Gör</button>
+                </div>
+                <div class="category-card" data-category="Sunnet">
+                    <div class="category-icon">
+                        <img src="icon/sunnet.svg" alt="Sünnet İkonu" class="category-svg">
+                    </div>
+                    <h3>Sünnet Davetiyesi</h3>
+                    <p>Çocuğunuzun özel günü için renkli ve eğlenceli tasarımlar</p>
+                    <button class="btn btn-outline">Ürünleri Gör</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products-section" style="display: none;">
+        <div class="container">
+            <div class="products-header">
+                <h2 class="section-title" id="products-title">Ürünler</h2>
+                <button class="btn btn-back" id="back-to-catalog">
+                    <i class="fas fa-arrow-left"></i> Modellere Dön
+                </button>
+            </div>
+            <div class="products-grid" id="products-grid">
+                <!-- Products will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Detail Section -->
+    <section id="product-detail" class="product-detail-section" style="display: none;">
+        <div class="container">
+            <div class="product-detail-header">
+                <button class="btn btn-back" id="back-to-products">
+                    <i class="fas fa-arrow-left"></i> Ürünlere Dön
+                </button>
+            </div>
+            <div class="product-detail-content">
+                <div class="product-detail-image">
+                    <img id="detail-product-image" src="" alt="Ürün Detayı">
+                </div>
+                <div class="product-detail-info">
+                    <h2 id="detail-product-title">Ürün Detayı</h2>
+                    <div class="product-detail-specs">
+                        <div class="spec-item">
+                            <strong>Ürün Kodu:</strong>
+                            <span id="detail-product-code"></span>
+                        </div>
+                        <div class="spec-item">
+                            <strong>Fiyat:</strong>
+                            <span id="detail-product-price"></span>
+                        </div>
+                    </div>
+
+                    <div class="product-notice">
+                        <h3><i class="fas fa-exclamation-triangle"></i> Sipariş Öncesi Dikkat Edilmesi Gereken Hususlar
+                        </h3>
+                        <ul>
+                            <li>Fiyatlarımız 100 Adet içindir.</li>
+                            <li>Kağıtlardaki fabrikadan kaynaklanan desen ve ton farklılıkları hata değildir.</li>
+                            <li>Sipariş miktarınız Minimum 50 adet ve katları olarak alınır.</li>
+                            <li>Davetiye fiyatlarına baskı ücreti dahil değildir.</li>
+                            <li>Aksesuar işçilikleri (kurdelâ, püskül, yapıştırmalar, vs.) müşteriye aittir.</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-order">
+                        <a href="#" id="detail-order-btn" target="_blank" class="btn btn-order">
+                            <i class="fab fa-whatsapp"></i> Hemen Sipariş Ver
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section main-page-only">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">Hakkımızda</h2>
+                    <p>2007 yılından bu yana hizmet veren Topkapı Davetiye, nişan davetiyesi, düğün davetiyesi, sünnet
+                        davetiyesi ve özel tasarım davetiye çeşitleri başta olmak üzere, her türlü reklam, tanıtım ve
+                        kurumsal baskı ürünlerini profesyonel kalitede üretmektedir.</p>
+                    <p>Gelişmiş teknolojiye sahip modern matbaa makinelerimiz ve deneyimli ekibimizle, müşterilerimize
+                        hızlı, kaliteli ve estetik baskı çözümleri sunuyoruz. Yaratıcı tasarımlar, özenli baskı süreci
+                        ve zamanında teslimat ilkeleriyle, özel günlerinizi ve kurumsal ihtiyaçlarınızı en iyi şekilde
+                        karşılıyoruz.</p>
+                    <p>Topkapı Davetiye, her davetiyeyi sizin hikayenize özel olarak tasarlar. Matbaa sektöründe
+                        edindiğimiz tecrübeyle, hem geleneksel hem modern davetiye tasarımlarında fark yaratıyoruz.</p>
+                </div>
+                <div class="about-features">
+                    <div class="feature-item">
+                        <i class="fas fa-handshake"></i>
+                        <h4>Dürüstlük</h4>
+                        <p>Şeffaf fiyatlandırma ve güvenilir hizmet</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-award"></i>
+                        <h4>Kalite</h4>
+                        <p>Premium malzeme ve profesyonel baskı</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-clock"></i>
+                        <h4>Hız</h4>
+                        <p>Zamanında teslimat garantisi</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-users"></i>
+                        <h4>Müşteri Odaklılık</h4>
+                        <p>Size özel tasarım ve çözümler</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-thumbs-up"></i>
+                        <h4>%100 Müşteri Memnuniyeti</h4>
+                        <p>Garantili memnuniyet ve kalite</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Price List Section -->
+    <section id="price-list" class="price-list-section" style="display: none;">
+        <div class="container">
+            <div class="price-list-header">
+                <h2 class="section-title">Fiyat Listesi</h2>
+                <button class="btn btn-back" id="back-to-home">
+                    <i class="fas fa-arrow-left"></i> Ana Sayfaya Dön
+                </button>
+            </div>
+            <div class="price-list-content">
+                <div class="price-list-image">
+                    <img src="fiyatlistesi.svg" alt="Fiyat Listesi" class="price-list-svg">
+                </div>
+                <div class="price-list-info">
+                    <p>Güncel fiyat bilgilerimiz için aşağıdaki listeden detayları inceleyebilirsiniz. Fiyatlar 100 adet için geçerlidir.</p>
+                    <div class="price-list-notice">
+                        <h3><i class="fas fa-info-circle"></i> Önemli Bilgiler</h3>
+                        <ul>
+                            <li>Fiyatlar 100 adet içindir.</li>
+                            <li>Minimum sipariş miktarı 50 adet ve katlarıdır.</li>
+                            <li>Baskı ücreti fiyatlara dahil değildir.</li>
+                            <li>Özel tasarım ve aksesuar işçilikleri ayrıca ücretlendirilir.</li>
+                            <li>Fiyatlar değişiklik gösterebilir.</li>
+                        </ul>
+                    </div>
+                    <div class="price-list-contact">
+                        <a href="https://wa.me/905315244000?text=Merhaba,+fiyat+listesi+hakkında+bilgi+almak+istiyorum." 
+                           target="_blank" 
+                           class="btn btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i> Fiyat Bilgisi Al
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section main-page-only">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-left">
+                    <h2 class="section-title">İletişim</h2>
+                    <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Adres</h4>
+                            <p>Şenlik Sokak, No:3/B Bahçelievler, İstanbul, Türkiye</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Telefon</h4>
+                            <p>+90 (212) 436 85 06</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-mobile-alt"></i>
+                        <div>
+                            <h4>Cep Telefonu</h4>
+                            <p>+90 (531) 524 40 00</p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="contact-map">
+                    <h3>Konum</h3>
+                    <p>Mağazamızı ziyaret etmek için haritadan konumumuzu görebilirsiniz.</p>
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3010.2158!2d28.845092!3d41.0158368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa4ce94ad6773%3A0xd2ecb2cecbe2bde7!2sD%C3%BC%C4%9F%C3%BCn%20Davetiye%20Merkezi!5e0!3m2!1str!2str!4v1640000000000!5m2!1str!2str"
+                            width="100%" 
+                            height="350" 
+                            style="border:0; border-radius: 10px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    <a href="https://www.google.com/maps/place/D%C3%BC%C4%9F%C3%BCn+Davetiye+Merkezi/@41.0158368,28.845092,15z/data=!4m6!3m5!1s0x14caa4ce94ad6773:0xd2ecb2cecbe2bde7!8m2!3d41.016435!4d28.852529!16s%2Fg%2F1tnpbrhl?entry=ttu&g_ep=EgoyMDI1MDgxMC4wIKXMDSoASAFQAw%3D%3D" 
+                       target="_blank" 
+                       class="btn btn-map">
+                        <i class="fas fa-map-marker-alt"></i> Haritada Görüntüle
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Topkapı Davetiye</h3>
+                    <p>Özel günlerinizi unutulmaz kılmak için buradayız.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Hızlı Linkler</h4>
+                    <ul>
+                        <li><a href="#home">Anasayfa</a></li>
+                        <li><a href="#about">Hakkımızda</a></li>
+                        <li><a href="#catalog">Davetiye Modelleri</a></li>
+                        <li><a href="#contact">İletişim</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>İletişim</h4>
+                    <p><i class="fas fa-phone"></i> +90 (212) 436 85 06</p>
+                    <p><i class="fas fa-mobile-alt"></i> +90 (531) 524 40 00</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Topkapı Davetiye. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/905315244000?text=Merhaba,+Topkapı+Davetiye+hakkında+bilgi+almak+istiyorum." 
+           target="_blank" 
+           class="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
